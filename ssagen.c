@@ -76,13 +76,34 @@ typedef struct BasicBlock
 
 static Instruction testCode[] =
 {
-	{ "add", "c", "c", "temp" },
-
-	{ "add", "c", "c", "c" },
-	{ "b", "-1", },
-	{ "mov", "out", "c" },
-	{ "ret", },
+	{ "b", "6" }, // goto B
+	{ "inst", "1" },
+	{ "inst", "2" },
+	{ "b", "6", },
+	{ "inst", "3" },
+	{ "inst", "4" },
+	{ "b", "-6", },
+	{ "inst", "5" },
+	{ "b", "1", },
+	{ "inst", "6" },
+	{ "inst", "7" },
+	{ "inst", "8" },
 };
+
+/*
+A: if x goto B
+inst 1
+inst 2
+jump C
+inst 3
+inst 4
+B: if y goto A
+inst 5
+jump C
+C: inst 6
+inst 7
+inst 8
+*/
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
